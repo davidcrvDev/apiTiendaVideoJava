@@ -35,16 +35,16 @@ public class Tercero {
     private String movil;
 
 
-    //Se borra documento, el ID ahora sera tambien el documento.
-    @Column(name = "documento", length = 50)
-    private String documento;
+    // //Se borra documento, el ID ahora sera tambien el documento.
+    // @Column(name = "documento", length = 50)
+    // private String documento;
 
-    //Se borra(creo), no se le ve sentido y no concuerda con las columnas del DDL.
-    @Column(name = "tipopersona")
-    private TipoPersona tipoPersona;
+    // //Se borra(creo), no se le ve sentido y no concuerda con las columnas del DDL.
+    // @Column(name = "tipopersona")
+    // private TipoPersona tipoPersona;
 
     public Tercero(Long id, TipoDocumento tipoDocumento, Ciudad ciudad, String direccion, String telefono, String movil,
-            String correo, String nombre, String documento, TipoPersona tipoPersona) {
+            String correo, String nombre) { //, String documento, TipoPersona tipoPersona
         this.id = id;
         this.tipoDocumento = tipoDocumento;
         this.ciudad = ciudad;
@@ -53,8 +53,8 @@ public class Tercero {
         this.movil = movil;
         this.correo = correo;
         this.nombre = nombre;
-        this.documento = documento;
-        this.tipoPersona = tipoPersona;
+        // this.documento = documento;
+        // this.tipoPersona = tipoPersona;
     }
 
     public Tercero() {
@@ -124,32 +124,32 @@ public class Tercero {
         this.nombre = nombre;
     }
 
-    public String getDocumento() {
-        return documento;
-    }
+    // public String getDocumento() {
+    //     return documento;
+    // }
 
-    public void setDocumento(String documento) {
-        this.documento = documento;
-    }
+    // public void setDocumento(String documento) {
+    //     this.documento = documento;
+    // }
 
-    public TipoPersona getTipoPersona() {
-        return tipoPersona;
-    }
+    // public TipoPersona getTipoPersona() {
+    //     return tipoPersona;
+    // }
 
-    public void setTipoPersona(TipoPersona tipoPersona) {
-        this.tipoPersona = tipoPersona;
-    }
+    // public void setTipoPersona(TipoPersona tipoPersona) {
+    //     this.tipoPersona = tipoPersona;
+    // }
 
-    public boolean obligadoIva() {
-        switch (this.tipoPersona) {
-            case NATURAL:
-                return false;
-            case JURIDICA:
-                return true;
-            case PUBLICA:
-                return false;
-        }
-        return false;
-    }
+    // public boolean obligadoIva() {
+    //     switch (this.tipoPersona) {
+    //         case NATURAL:
+    //             return false;
+    //         case JURIDICA:
+    //             return true;
+    //         case PUBLICA:
+    //             return false;
+    //     }
+    //     return false;
+    // }
 
 }

@@ -4,18 +4,21 @@ import java.sql.Date;
 import java.time.LocalDate;
 import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table(name = "ALQUILER")
 public class Alquiler {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "secuencia_alquiler")
+    @GenericGenerator(name = "secuencia_alquiler", strategy = "increment")
     @Column(name = "ID_ALQUILER")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "IDINVENTARIO", referencedColumnName = "ID_INVENTARIO")
-    private Inventario inventario;
+    @JoinColumn(name = "IDTITULO", referencedColumnName = "ID_TITULO")
+    private Titulo titulo;
 
     @ManyToOne
     @JoinColumn(name = "IDCLIENTE", referencedColumnName = "ID_CLIENTE") //Pasa de ser "tercero" a "CLIENTE"
@@ -41,10 +44,10 @@ public class Alquiler {
     public Alquiler() {
     }
 
-    public Alquiler(Long id, Inventario inventario, Tercero tercero, LocalDate fechaPrestamo, int plazo,
-                     LocalDate fechaDevolucion, double precio) {
+    public Alquiler(Long id, Tercero tercero, LocalDate fechaPrestamo, int plazo,
+                     LocalDate fechaDevolucion, double precio, Titulo titulo) {
         this.id = id;
-        this.inventario = inventario;
+        this.titulo = titulo;
         this.tercero = tercero;
         this.fechaPrestamo = fechaPrestamo;
         this.plazo = plazo;
@@ -88,12 +91,12 @@ public class Alquiler {
         this.precio = precio;
     }
 
-    public Inventario getInventario() {
-        return inventario;
+    public Titulo getTitulo() {
+        return titulo;
     }
 
-    public void setInventario(Inventario inventario) {
-        this.inventario = inventario;
+    public void setTitulo(Titulo titulo) {
+        this.titulo = titulo;
     }
 
     public Tercero getTercero() {
