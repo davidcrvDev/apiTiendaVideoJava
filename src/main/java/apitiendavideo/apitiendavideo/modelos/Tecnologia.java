@@ -13,7 +13,7 @@ public class Tecnologia {
     @Column(name = "ID_DISPOSITIVO")
     private long id;
 
-    @Column(name = "NOMBRE_DISPOSITIVO", length = 50)
+    @Column(name = "NOMBRE_DISPOSITIVO",nullable = false, length = 50)
     private String nombre;
 
     public Tecnologia() {
