@@ -17,8 +17,8 @@ public class Alquiler {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "IDTITULO", referencedColumnName = "ID_TITULO")
-    private Titulo titulo;
+    @JoinColumn(name = "IDINVENTARIO", referencedColumnName = "ID_INVENTARIO")
+    private Inventario inventario;
 
     @ManyToOne
     @JoinColumn(name = "IDCLIENTE", referencedColumnName = "ID_CLIENTE") //Pasa de ser "tercero" a "CLIENTE"
@@ -27,7 +27,7 @@ public class Alquiler {
     @Column(name = "FECHA_PRESTAMO", nullable = false)
     private LocalDate fechaPrestamo;
 
-    @Column(name = "PLAZO_ALQUILER", nullable = false)
+    @Column(name = "PLAZO_ALQUILER")
     private int plazo;
 
     @Column(name = "FECHA_DEVOLUCION")
@@ -36,23 +36,22 @@ public class Alquiler {
     @Column(name = "PRECIO_ALQUILER", nullable = false)
     private double precio;
 
-
-    public Long getId() {
-        return id;
-    }
-
     public Alquiler() {
     }
 
     public Alquiler(Long id, Tercero tercero, LocalDate fechaPrestamo, int plazo,
-                     LocalDate fechaDevolucion, double precio, Titulo titulo) {
+                     LocalDate fechaDevolucion, double precio, Inventario inventario) {
         this.id = id;
-        this.titulo = titulo;
+        this.inventario = inventario;
         this.tercero = tercero;
         this.fechaPrestamo = fechaPrestamo;
         this.plazo = plazo;
         this.fechaDevolucion = fechaDevolucion;
         this.precio = precio;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
@@ -91,12 +90,12 @@ public class Alquiler {
         this.precio = precio;
     }
 
-    public Titulo getTitulo() {
-        return titulo;
+    public Inventario getInventario() {
+        return inventario;
     }
 
-    public void setTitulo(Titulo titulo) {
-        this.titulo = titulo;
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
     }
 
     public Tercero getTercero() {

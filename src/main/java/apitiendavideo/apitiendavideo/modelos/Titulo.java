@@ -24,11 +24,11 @@ public class Titulo {
     @Column(name = "AÑO_TITULO", nullable = false, length = 4)
     private int año;
 
-    @Column(name = "PROTAGONISTAS_TITULO", length = 500)
-    private String protagonistas;
+    // @Column(name = "PROTAGONISTAS_TITULO", length = 500)
+    // private String protagonistas;
 
-    @Column(name = "PRODUCTOR_TITULO", length = 50)
-    private String productor;
+    // @Column(name = "PRODUCTOR_TITULO", length = 50)
+    // private String productor;
 
     @Column(name = "DIRECTOR_TITULO", length = 50)
     private String director;
@@ -51,8 +51,8 @@ public class Titulo {
         this.id = id;
         this.nombre = nombre;
         this.año = año;
-        this.protagonistas = protagonistas;
-        this.productor = productor;
+        // this.protagonistas = protagonistas;
+        // this.productor = productor;
         this.director = director;
         this.empresa = empresa;
         this.precio = precio;
@@ -82,21 +82,21 @@ public class Titulo {
         this.año = año;
     }
 
-    public String getProtagonistas() {
-        return protagonistas;
-    }
+    // public String getProtagonistas() {
+    //     return protagonistas;
+    // }
 
-    public void setProtagonistas(String protagonistas) {
-        this.protagonistas = protagonistas;
-    }
+    // public void setProtagonistas(String protagonistas) {
+    //     this.protagonistas = protagonistas;
+    // }
 
-    public String getProductor() {
-        return productor;
-    }
+    // public String getProductor() {
+    //     return productor;
+    // }
 
-    public void setProductor(String productor) {
-        this.productor = productor;
-    }
+    // public void setProductor(String productor) {
+    //     this.productor = productor;
+    // }
 
     public String getDirector() {
         return director;

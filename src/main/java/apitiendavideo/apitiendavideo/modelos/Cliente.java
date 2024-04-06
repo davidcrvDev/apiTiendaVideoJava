@@ -18,6 +18,9 @@ public class Cliente {
     @Column(name = "NOMBRE_CLIENTE", nullable = false, length = 60)
     private String nombre_cliente;
 
+    @Column(name = "APELLIDO_CLIENTE", nullable = false, length = 60)
+    private String apellido_cliente;
+
     @Column(name = "DIRECCION_CLIENTE", nullable = false, length = 50)
     private String direccion;
 
@@ -28,7 +31,7 @@ public class Cliente {
     @JoinColumn(name = "IDCIUDAD", referencedColumnName = "ID_CIUDAD")
     private Ciudad ciudad;
 
-    @Column(name = "CORREO_CLIENTE", nullable = false, length = 50)
+    @Column(name = "CORREO_CLIENTE", length = 50)
     private String correo;
 
     @Column(name = "MOVIL_CLIENTE", nullable = false, length = 20)
@@ -37,11 +40,12 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(long id, TipoDocumento tipo_documento, String nombre_cliente, String direccion, String telefono,
-            Ciudad ciudad, String correo, String movil) {
+    public Cliente(long id, TipoDocumento tipo_documento, String nombre_cliente, String apellido_cliente, String direccion, 
+                    String telefono,Ciudad ciudad, String correo, String movil) {
         this.id = id;
         this.tipo_documento = tipo_documento;
         this.nombre_cliente = nombre_cliente;
+        this.apellido_cliente = apellido_cliente;
         this.direccion = direccion;
         this.telefono = telefono;
         this.ciudad = ciudad;
@@ -71,6 +75,14 @@ public class Cliente {
 
     public void setNombre_cliente(String nombre_cliente) {
         this.nombre_cliente = nombre_cliente;
+    }
+
+    public String getApellido_cliente() {
+        return apellido_cliente;
+    }
+
+    public void setApellido_cliente(String apellido_cliente) {
+        this.apellido_cliente = apellido_cliente;
     }
 
     public String getDireccion() {
