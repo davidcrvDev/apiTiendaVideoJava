@@ -18,7 +18,7 @@ public class Titulo {
     @Column(name = "ID_TITULO")
     private long id;
 
-    @Column(name = "NOMBRE_TITULO",nullable = false, length = 50, unique = true)
+    @Column(name = "NOMBRE_TITULO",nullable = false, length = 50) //, unique = true
     private String nombre;
 
     @Column(name = "AÑO_TITULO", nullable = false, length = 4)
@@ -46,7 +46,7 @@ public class Titulo {
     public Titulo() {
     }
 
-    public Titulo(long id, String nombre, int año, String protagonistas, String productor, String director,
+    public Titulo(long id, String nombre, int año, String director, //String protagonistas, String productor,
             Empresa empresa, double precio) {
         this.id = id;
         this.nombre = nombre;
