@@ -14,7 +14,7 @@ public class Empresa {
     @Column(name = "ID_EMPRESA")
     private long id;
 
-    @Column(name = "NOMBRE_EMPRESA",nullable = false, length = 50, unique = true)
+    @Column(name = "NOMBRE_EMPRESA",nullable = false, length = 50) //, unique = true
     private String nombre;
 
     @ManyToOne

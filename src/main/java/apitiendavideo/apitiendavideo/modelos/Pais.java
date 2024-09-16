@@ -11,7 +11,7 @@ public class Pais {
     @Column(name = "ID_PAIS")
     private long id;
 
-    @Column(name = "NOMBRE_PAIS", nullable = false, length = 50, unique = true)
+    @Column(name = "NOMBRE_PAIS", nullable = false, length = 50) //, unique = true
     private String pais;
 
     // @Column(name = "CODIGOALFA2", length = 2, nullable = true)
@@ -23,7 +23,7 @@ public class Pais {
     public Pais() {
     }
 
-    public Pais(long id, String pais, String codigoAlfa2, String codigoAlfa3) {
+    public Pais(long id, String pais, String codigoAlfa3) { //String codigoAlfa2,
         this.id = id;
         this.pais = pais;
         //this.codigoAlfa2 = codigoAlfa2;
