@@ -8,7 +8,7 @@ public interface ITerceroServicio {
     
     public List<Tercero> listar();
 
-    public Tercero obtener(Long id);
+    public List<Tercero> obtener(String id);
 
     public List<Tercero> buscar(String nombre);
 

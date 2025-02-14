@@ -15,4 +15,6 @@ public interface TerceroRepositorio extends JpaRepository<Tercero, Long>{
     @Query("SELECT te FROM Tercero te order by id ASC")
     List<Tercero> listar();
     
+    @Query("SELECT c FROM Tercero c WHERE c.id like '%' || ?1 || '%'")
+    List<Tercero> buscarID(String id);
 }

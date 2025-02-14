@@ -21,8 +21,8 @@ public class TerceroServicio implements ITerceroServicio{
     }
 
     @Override
-    public Tercero obtener(Long id) {
-        return repositorio.findById(id).get();
+    public List<Tercero> obtener(String id) {
+        return repositorio.buscarID(id);//findById.get()
     }
 
     @Override

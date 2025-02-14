@@ -21,7 +21,7 @@ public class Titulo {
     @Column(name = "NOMBRE_TITULO",nullable = false, length = 50) //, unique = true
     private String nombre;
 
-    @Column(name = "AÑO_TITULO", nullable = false, length = 4)
+    @Column(name = "ANO_TITULO", nullable = false, length = 4)
     private int año;
 
     // @Column(name = "PROTAGONISTAS_TITULO", length = 500)

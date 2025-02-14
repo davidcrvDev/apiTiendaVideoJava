@@ -31,7 +31,7 @@ public class Cliente {
     @JoinColumn(name = "IDCIUDAD", referencedColumnName = "ID_CIUDAD")
     private Ciudad ciudad;
 
-    @Column(name = "CORREO_CLIENTE", length = 50)
+    @Column(name = "CORREO_CLIENTE", nullable = false, length = 50)
     private String correo;
 
     @Column(name = "MOVIL_CLIENTE", nullable = false, length = 20)

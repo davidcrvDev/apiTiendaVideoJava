@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -15,14 +18,18 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
+    @Column(name = "ID_USUARIO")
     private long id;
 
-    @Column(name = "USUARIO")
-    private String usuario;
+    @OneToOne //Es posible que a futuro sea @ManyToOne en caso de que 1 cliente pueda tener varios usuarios de ingreso y VICEVERSA
+    @JoinColumn(name = "IDCLIENTE", referencedColumnName = "ID_CLIENTE")
+    private Cliente cliente;
 
-    @Column(name = "CLAVE")
+    @Column(name = "CLAVE", nullable = false, length = 12)
     private String clave;
+
+    @Column(name = "ROL_USUARIO", length = 20)
+    private String rol_usuario;
 
     //private String token;
 
@@ -30,10 +37,11 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(long id, String usuario, String clave) {
+    public Usuario(long id, Cliente cliente, String clave, String rol_usuario) {
         this.id = id;
-        this.usuario = usuario;
+        this.cliente = cliente;
         this.clave = clave;
+        this.rol_usuario = rol_usuario;
     }
 
     
@@ -46,21 +54,28 @@ public class Usuario {
         this.id = id;
     }
 
-
-    public String getUsuario() {
-        return usuario;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
-
+    
     public String getClave() {
         return clave;
     }
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public String getRolUsuario() {
+        return rol_usuario;
+    }
+
+    public void setRolUsuario(String rol_usuario) {
+        this.rol_usuario = rol_usuario;
     }
 
     // public String getToken() {

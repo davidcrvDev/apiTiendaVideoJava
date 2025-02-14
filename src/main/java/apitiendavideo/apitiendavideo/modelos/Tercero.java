@@ -9,7 +9,7 @@ public class Tercero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_CLIENTE", length = 50)
-    private long id;
+    private String id;
 
     @ManyToOne
     @JoinColumn(name = "IDTIPODOCUMENTO", referencedColumnName = "ID_TIPODOC")
@@ -43,7 +43,7 @@ public class Tercero {
     // @Column(name = "tipopersona")
     // private TipoPersona tipoPersona;
 
-    public Tercero(Long id, TipoDocumento tipoDocumento, Ciudad ciudad, String direccion, String telefono, String movil,
+    public Tercero(String id, TipoDocumento tipoDocumento, Ciudad ciudad, String direccion, String telefono, String movil,
             String correo, String nombre) { //, String documento, TipoPersona tipoPersona
         this.id = id;
         this.tipoDocumento = tipoDocumento;
@@ -60,11 +60,11 @@ public class Tercero {
     public Tercero() {
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

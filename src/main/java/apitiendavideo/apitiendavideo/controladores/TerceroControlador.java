@@ -26,7 +26,7 @@ public class TerceroControlador {
     }
 
     @RequestMapping(value = "/obtener/{id}", method = RequestMethod.GET)
-    public Tercero obtener(@PathVariable Long id) {
+    public List<Tercero> obtener(@PathVariable String id) {
         return servicio.obtener(id);
     }
 

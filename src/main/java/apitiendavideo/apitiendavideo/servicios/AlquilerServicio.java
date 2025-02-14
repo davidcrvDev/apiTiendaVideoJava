@@ -32,7 +32,7 @@ public class AlquilerServicio implements IAlquilerServicio{
     }
 
     @Override
-    public List<Tercero> buscarTercero(Long id) {
+    public List<Tercero> buscarTercero(String id) {
         return repositorio.buscarCliente(id);
     }
 

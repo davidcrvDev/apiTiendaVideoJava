@@ -9,6 +9,7 @@ import apitiendavideo.apitiendavideo.modelos.Pais;
 
 @RestController
 @RequestMapping("/paises")
+//@CrossOrigin(origins = "*")
 public class PaisControlador {
 
     @Autowired

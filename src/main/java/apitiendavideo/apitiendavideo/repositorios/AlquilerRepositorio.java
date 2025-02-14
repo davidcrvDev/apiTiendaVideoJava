@@ -17,6 +17,6 @@ public interface AlquilerRepositorio extends JpaRepository<Alquiler,Long> {
 
     //SELECT i FROM Inventario i join i.titulo t WHERE t.nombre like '%' || ?1 || '%'; ON a.idcliente = c.id_cliente
     @Query("SELECT a FROM Alquiler a JOIN a.tercero c WHERE c.id LIKE '%' || ?1 || '%'")
-    List<Tercero> buscarCliente(Long id);
+    List<Tercero> buscarCliente(String id);
     
 }

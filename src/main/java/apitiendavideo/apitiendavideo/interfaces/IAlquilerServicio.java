@@ -11,7 +11,7 @@ public interface IAlquilerServicio {
 
     public Alquiler obtener(Long id);
 
-    public List<Tercero> buscarTercero(Long id);
+    public List<Tercero> buscarTercero(String id);
 
     public Alquiler guardar(Alquiler alquiler);
 

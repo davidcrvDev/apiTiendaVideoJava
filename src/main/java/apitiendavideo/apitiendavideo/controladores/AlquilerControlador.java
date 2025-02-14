@@ -26,8 +26,8 @@ public class AlquilerControlador {
         return servicio.obtener(id);
     }
 
-    @GetMapping("/{nombre}/buscarclientes")
-    public List<Tercero> buscarClientes(@PathVariable Long id) {
+    @GetMapping("/{id}/buscarclientes")
+    public List<Tercero> buscarClientes(@PathVariable String id) {
         return servicio.buscarTercero(id);
     }
     
