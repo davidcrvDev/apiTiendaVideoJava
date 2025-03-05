@@ -7,9 +7,9 @@ import javax.persistence.*;
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID_CLIENTE")
-    private long id;
+    private String id;
 
     @ManyToOne
     @JoinColumn(name = "IDTIPODOCUMENTO", referencedColumnName = "ID_TIPODOC")
@@ -27,37 +27,48 @@ public class Cliente {
     @Column(name = "TELEFONO_CLIENTE", length = 20)
     private String telefono;
 
-    @ManyToOne
-    @JoinColumn(name = "IDCIUDAD", referencedColumnName = "ID_CIUDAD")
-    private Ciudad ciudad;
-
-    @Column(name = "CORREO_CLIENTE", length = 50)
+    @Column(name = "CORREO_CLIENTE", nullable = false, length = 50)
     private String correo;
 
     @Column(name = "MOVIL_CLIENTE", nullable = false, length = 20)
     private String movil;
 
+    @Column(name = "CLAVE", nullable = false, length = 12)
+    private String clave;
+
+    @Column(name = "ROL", nullable = false, length = 20)
+    private String rol;
+
+    @Column(name = "MOROSO", columnDefinition = "BOOLEAN DEFAULT FALSE")
+    private boolean moroso;
+
+    @Column(name = "ACTIVO", columnDefinition = "BOOLEAN DEFAULT TRUE")
+    private boolean activo;
+
     public Cliente() {
     }
 
-    public Cliente(long id, TipoDocumento tipo_documento, String nombre_cliente, String apellido_cliente, String direccion, 
-                    String telefono,Ciudad ciudad, String correo, String movil) {
+    public Cliente(String id, TipoDocumento tipo_documento, String nombre_cliente, String apellido_cliente, String direccion, 
+                    String telefono, String correo, String movil, String clave, String rol, boolean moroso, boolean activo) {
         this.id = id;
         this.tipo_documento = tipo_documento;
         this.nombre_cliente = nombre_cliente;
         this.apellido_cliente = apellido_cliente;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.ciudad = ciudad;
         this.correo = correo;
         this.movil = movil;
+        this.clave = clave;
+        this.rol = rol;
+        this.moroso = moroso;
+        this.activo = activo;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -101,14 +112,6 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public Ciudad getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(Ciudad ciudad) {
-        this.ciudad = ciudad;
-    }
-
     public String getCorreo() {
         return correo;
     }
@@ -123,6 +126,38 @@ public class Cliente {
 
     public void setMovil(String movil) {
         this.movil = movil;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public Boolean getMoroso() {
+        return moroso;
+    }
+
+    public void setMoroso(Boolean moroso) {
+        this.moroso = moroso;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
 
     

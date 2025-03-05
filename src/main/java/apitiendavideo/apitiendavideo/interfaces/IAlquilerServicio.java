@@ -3,7 +3,6 @@ package apitiendavideo.apitiendavideo.interfaces;
 import java.util.List;
 
 import apitiendavideo.apitiendavideo.modelos.Alquiler;
-import apitiendavideo.apitiendavideo.modelos.Tercero;
 
 public interface IAlquilerServicio {
 
@@ -11,7 +10,7 @@ public interface IAlquilerServicio {
 
     public Alquiler obtener(Long id);
 
-    public List<Tercero> buscarTercero(Long id);
+    public List<Alquiler> buscarCliente(Long id);
 
     public Alquiler guardar(Alquiler alquiler);
 

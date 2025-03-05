@@ -22,7 +22,7 @@ public class TipoDocumento {
     public TipoDocumento() {
     }
 
-    public TipoDocumento(long id, String tipo, String ingles, String sigla) {
+    public TipoDocumento(long id, String tipo, String sigla) {
         this.id = id;
         this.tipo = tipo;
         // this.ingles = ingles;

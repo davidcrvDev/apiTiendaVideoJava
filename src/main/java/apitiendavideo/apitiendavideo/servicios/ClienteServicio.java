@@ -27,7 +27,7 @@ public class ClienteServicio implements IClienteServicio {
     }
 
     @Override
-    public Cliente obtener(Long id) {
+    public Cliente obtener(String id) {
         return repositorio.findById(id).get();
     }
 
@@ -42,7 +42,7 @@ public class ClienteServicio implements IClienteServicio {
     }
 
     @Override
-    public boolean eliminar(Long id) {
+    public boolean eliminar(String id) {
         try {
             repositorio.deleteById(id);
             return true;

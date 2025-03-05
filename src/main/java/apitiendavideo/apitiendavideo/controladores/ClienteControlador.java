@@ -25,7 +25,7 @@ public class ClienteControlador {
     }
 
     @RequestMapping(value = "/obtener/{id}", method = RequestMethod.GET)
-    public Cliente obtener(@PathVariable Long id) {
+    public Cliente obtener(@PathVariable String id) {
         return servicio.obtener(id);
     }
 
@@ -49,7 +49,7 @@ public class ClienteControlador {
     }
 
     @RequestMapping(value = "/eliminar/{id}", method = RequestMethod.DELETE)
-    public boolean eliminar(@PathVariable long id) {
+    public boolean eliminar(@PathVariable String id) {
         return servicio.eliminar(id);
     }
 }

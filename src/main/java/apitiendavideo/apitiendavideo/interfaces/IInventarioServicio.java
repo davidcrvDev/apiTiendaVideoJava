@@ -10,7 +10,7 @@ public interface IInventarioServicio {
 
     public Inventario obtener(Long id);
 
-    public List<Inventario> buscar(String nombre);
+    public List<Inventario> buscar(String nombre, Long id);
 
     public Inventario guardar(Inventario inventario);
 

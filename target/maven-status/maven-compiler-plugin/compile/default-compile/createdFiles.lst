@@ -42,6 +42,7 @@ apitiendavideo\apitiendavideo\interfaces\IEmpresaServicio.class
 apitiendavideo\apitiendavideo\controladores\UsuarioControlador.class
 apitiendavideo\apitiendavideo\interfaces\IClienteServicio.class
 apitiendavideo\apitiendavideo\repositorios\CiudadRepositorio.class
+apitiendavideo\apitiendavideo\ApitiendavideoApplication$CorsConfig.class
 apitiendavideo\apitiendavideo\servicios\AlquilerServicio.class
 apitiendavideo\apitiendavideo\ApitiendavideoApplication.class
 apitiendavideo\apitiendavideo\interfaces\IUsuarioServicio.class

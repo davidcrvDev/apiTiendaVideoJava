@@ -27,8 +27,8 @@ public class InventarioServicio implements IInventarioServicio {
     }
 
     @Override
-    public List<Inventario> buscar(String nombre) {
-        return repositorio.buscar(nombre);
+    public List<Inventario> buscar(String nombre, Long id) {
+        return repositorio.buscar(nombre, id);
     }
 
     @Override

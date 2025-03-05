@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import apitiendavideo.apitiendavideo.interfaces.IAlquilerServicio;
 import apitiendavideo.apitiendavideo.modelos.Alquiler;
-import apitiendavideo.apitiendavideo.modelos.Tercero;
 
 
 @RestController 
@@ -26,9 +25,9 @@ public class AlquilerControlador {
         return servicio.obtener(id);
     }
 
-    @GetMapping("/{nombre}/buscarclientes")
-    public List<Tercero> buscarClientes(@PathVariable Long id) {
-        return servicio.buscarTercero(id);
+    @GetMapping("/{id}/buscarcliente")
+    public List<Alquiler> buscarCliente(@PathVariable Long id) {
+        return servicio.buscarCliente(id);
     }
     
     @PostMapping("/agregar")
