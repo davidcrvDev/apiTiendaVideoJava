@@ -9,47 +9,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import apitiendavideo.apitiendavideo.interfaces.IClienteServicio;
-import apitiendavideo.apitiendavideo.modelos.Cliente;
+import apitiendavideo.apitiendavideo.interfaces.ICategoriaServicio;
+import apitiendavideo.apitiendavideo.modelos.Categoria;
 
-@RestController 
-@RequestMapping("/clientes")
-public class ClienteControlador {
-
+@RestController
+@RequestMapping("/categorias")
+public class CategoriaControlador {
+    
     @Autowired
-    private IClienteServicio servicio;
+    private ICategoriaServicio servicio;
 
     @RequestMapping(value = "/listar", method = RequestMethod.GET)
-    public List<Cliente> listar() {
+    public List<Categoria> listar() {
         return servicio.listar();
     }
 
     @RequestMapping(value = "/obtener/{id}", method = RequestMethod.GET)
-    public Cliente obtener(@PathVariable String id) {
+    public Categoria obtener(@PathVariable Long id) {
         return servicio.obtener(id);
     }
 
     @RequestMapping(value = "/buscar/{nombre}", method = RequestMethod.GET)
-    public List<Cliente> buscar(@PathVariable String nombre) {
+    public List<Categoria> buscar(@PathVariable String nombre) {
         return servicio.buscar(nombre);
     }
-    
+
     @RequestMapping(value = "/agregar", method = RequestMethod.POST)
-    public Cliente crear(@RequestBody Cliente cliente) {
-        return servicio.guardar(cliente);
+    public Categoria crear(@RequestBody Categoria categoria) {
+        return servicio.guardar(categoria);
     }
 
     @RequestMapping(value = "/modificar", method = RequestMethod.PUT)
-    public Cliente actualizar(@RequestBody Cliente cliente) {
-        if (servicio.obtener(cliente.getId()) != null) {
-            return servicio.guardar(cliente);
-        } else {
+    public Categoria actualizar(@RequestBody Categoria categoria) {
+        if (servicio.obtener(categoria.getId()) != null) {
+            return servicio.guardar(categoria);
+        }
+        else{
             return null;
         }
     }
 
     @RequestMapping(value = "/eliminar/{id}", method = RequestMethod.DELETE)
-    public boolean eliminar(@PathVariable String id) {
+    public boolean eliminar(@PathVariable long id) {
         return servicio.eliminar(id);
+        
     }
 }

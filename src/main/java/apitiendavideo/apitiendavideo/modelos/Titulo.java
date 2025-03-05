@@ -18,11 +18,11 @@ public class Titulo {
     @Column(name = "ID_TITULO")
     private long id;
 
-    @Column(name = "NOMBRE_TITULO",nullable = false, length = 50) //, unique = true
+    @Column(name = "NOMBRE_TITULO", nullable = false, length = 50) //, unique = true
     private String nombre;
 
     @Column(name = "ANO_TITULO", nullable = false, length = 4)
-    private int año;
+    private int ano;
 
     // @Column(name = "PROTAGONISTAS_TITULO", length = 500)
     // private String protagonistas;
@@ -34,11 +34,8 @@ public class Titulo {
     private String director;
 
     @ManyToOne
-    @JoinColumn(name = "IDEMPRESA", referencedColumnName = "ID_EMPRESA")
-    private Empresa empresa;
-
-    @Column(name = "PRECIO_TITULO", nullable = false)
-    private double precio;
+    @JoinColumn(name = "IDCATEGORIA", referencedColumnName = "ID_CATEGORIA")
+    private Categoria categoria;
 
     @OneToMany(mappedBy = "titulo")
     private List<Inventario> inventarios;
@@ -46,16 +43,13 @@ public class Titulo {
     public Titulo() {
     }
 
-    public Titulo(long id, String nombre, int año, String director, //String protagonistas, String productor,
-            Empresa empresa, double precio) {
+    public Titulo(long id, String nombre, int ano, String director,
+            Categoria categoria) {
         this.id = id;
         this.nombre = nombre;
-        this.año = año;
-        // this.protagonistas = protagonistas;
-        // this.productor = productor;
+        this.ano = ano;
         this.director = director;
-        this.empresa = empresa;
-        this.precio = precio;
+        this.categoria = categoria;
     }
 
     public long getId() {
@@ -74,29 +68,13 @@ public class Titulo {
         this.nombre = nombre;
     }
 
-    public int getAño() {
-        return año;
+    public int getAno() {
+        return ano;
     }
 
-    public void setAño(int año) {
-        this.año = año;
+    public void setAno(int ano) {
+        this.ano = ano;
     }
-
-    // public String getProtagonistas() {
-    //     return protagonistas;
-    // }
-
-    // public void setProtagonistas(String protagonistas) {
-    //     this.protagonistas = protagonistas;
-    // }
-
-    // public String getProductor() {
-    //     return productor;
-    // }
-
-    // public void setProductor(String productor) {
-    //     this.productor = productor;
-    // }
 
     public String getDirector() {
         return director;
@@ -106,20 +84,12 @@ public class Titulo {
         this.director = director;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
 }

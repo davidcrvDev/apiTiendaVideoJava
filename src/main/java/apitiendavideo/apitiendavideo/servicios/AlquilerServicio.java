@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import apitiendavideo.apitiendavideo.interfaces.IAlquilerServicio;
 import apitiendavideo.apitiendavideo.modelos.Alquiler;
-import apitiendavideo.apitiendavideo.modelos.Tercero;
 import apitiendavideo.apitiendavideo.repositorios.AlquilerRepositorio;
 
 @Service
@@ -32,7 +31,7 @@ public class AlquilerServicio implements IAlquilerServicio{
     }
 
     @Override
-    public List<Tercero> buscarTercero(String id) {
+    public List<Alquiler> buscarCliente(Long id) {
         return repositorio.buscarCliente(id);
     }
 

@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import apitiendavideo.apitiendavideo.modelos.Alquiler;
-import apitiendavideo.apitiendavideo.modelos.Tercero;
 
 @Repository
 public interface AlquilerRepositorio extends JpaRepository<Alquiler,Long> {
@@ -16,7 +15,7 @@ public interface AlquilerRepositorio extends JpaRepository<Alquiler,Long> {
     List<Alquiler> buscar(Long id);
 
     //SELECT i FROM Inventario i join i.titulo t WHERE t.nombre like '%' || ?1 || '%'; ON a.idcliente = c.id_cliente
-    @Query("SELECT a FROM Alquiler a JOIN a.tercero c WHERE c.id LIKE '%' || ?1 || '%'")
-    List<Tercero> buscarCliente(String id);
+    @Query("SELECT a FROM Alquiler a JOIN a.cliente c WHERE c.id LIKE '%' || ?1 || '%'")
+    List<Alquiler> buscarCliente(Long id);
     
 }

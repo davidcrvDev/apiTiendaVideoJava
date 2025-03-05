@@ -17,4 +17,7 @@ public interface InventarioRepositorio extends JpaRepository<Inventario, Long> {
     // @Query("SELECT i FROM Inventario i order by id ASC")
     // List<Inventario> listar();
     
+    @Query("SELECT i FROM Inventario i WHERE i.titulo.nombre LIKE CONCAT('%', :nombre, '%') AND i.tecnologia.id = :id")
+    List<Inventario> buscar(String nombre, Long id);
+
 }

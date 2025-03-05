@@ -17,12 +17,8 @@ public class Alquiler {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "IDINVENTARIO", referencedColumnName = "ID_INVENTARIO")
-    private Inventario inventario;
-
-    @ManyToOne
     @JoinColumn(name = "IDCLIENTE", referencedColumnName = "ID_CLIENTE") //Pasa de ser "tercero" a "CLIENTE"
-    private Tercero tercero;
+    private Cliente cliente;
 
     @Column(name = "FECHA_PRESTAMO", nullable = false)
     private LocalDate fechaPrestamo;
@@ -39,11 +35,10 @@ public class Alquiler {
     public Alquiler() {
     }
 
-    public Alquiler(Long id, Tercero tercero, LocalDate fechaPrestamo, int plazo,
-                     LocalDate fechaDevolucion, double precio, Inventario inventario) {
+    public Alquiler(Long id, Cliente cliente, LocalDate fechaPrestamo, int plazo,
+                    LocalDate fechaDevolucion, double precio) {
         this.id = id;
-        this.inventario = inventario;
-        this.tercero = tercero;
+        this.cliente = cliente;
         this.fechaPrestamo = fechaPrestamo;
         this.plazo = plazo;
         this.fechaDevolucion = fechaDevolucion;
@@ -90,20 +85,12 @@ public class Alquiler {
         this.precio = precio;
     }
 
-    public Inventario getInventario() {
-        return inventario;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setInventario(Inventario inventario) {
-        this.inventario = inventario;
-    }
-
-    public Tercero getTercero() {
-        return tercero;
-    }
-
-    public void setTercero(Tercero tercero) {
-        this.tercero = tercero;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
 }

@@ -32,9 +32,9 @@ public class InventarioControlador {
         return servicio.obtener(id);
     }
 
-    @GetMapping("/buscar/{nombre}")
-    public List<Inventario> buscar(@PathVariable String nombre) {
-        return servicio.buscar(nombre);
+    @GetMapping("/buscar/{nombre}/{id}")
+    public List<Inventario> buscar(@PathVariable String nombre, @PathVariable Long id) {
+        return servicio.buscar(nombre, id);
     }
 
 

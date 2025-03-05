@@ -2,7 +2,7 @@ package apitiendavideo.apitiendavideo.modelos;
 
 import java.sql.Date;
 //import com.fasterxml.jackson.annotation.JsonFormat;
-//import java.time.LocalDate;
+import java.time.LocalDate;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -20,7 +20,7 @@ public class Inventario {
     private Titulo titulo;
 
     @Column(name = "DISPONIBLE", nullable = false)//Paso de ser "consecutivo" a "DISPONIBLE"
-    private Integer consecutivo;
+    private Integer disponible;
 
     @ManyToOne
     @JoinColumn(name = "IDDISPOSITIVO", referencedColumnName = "ID_DISPOSITIVO")//Pasa de ser "tecnologia" a "DISPOSITIVO"
@@ -28,7 +28,10 @@ public class Inventario {
 
     @Column(name = "FECHA_ADQUISICION", nullable = false)
     //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date fechaAdquisicion;
+    private LocalDate fechaAdquisicion;
+
+    @Column(name = "PRECIO_TITULO", nullable = false)
+    private double precio;
 
     @Column(name = "ACTIVO", nullable = false, length = 1)
     private String activo;
@@ -36,13 +39,14 @@ public class Inventario {
     public Inventario() {
     }
 
-    public Inventario(long id, Titulo titulo, Integer consecutivo, Tecnologia tecnologia, Date fechaAdquisicion,
-            String activo) {
+    public Inventario(long id, Titulo titulo, Integer disponible, Tecnologia tecnologia, LocalDate fechaAdquisicion,
+            Double precio, String activo) {
         this.id = id;
         this.titulo = titulo;
-        this.consecutivo = consecutivo;
+        this.disponible = disponible;
         this.tecnologia = tecnologia;
         this.fechaAdquisicion = fechaAdquisicion;
+        this.precio = precio;
         this.activo = activo;
     }
 
@@ -62,12 +66,12 @@ public class Inventario {
         this.titulo = titulo;
     }
 
-    public Integer getConsecutivo() {
-        return consecutivo;
+    public Integer getDisponible() {
+        return disponible;
     }
 
-    public void setConsecutivo(Integer consecutivo) {
-        this.consecutivo = consecutivo;
+    public void setDisponible(Integer disponible) {
+        this.disponible = disponible;
     }
 
     public Tecnologia getTecnologia() {
@@ -78,12 +82,20 @@ public class Inventario {
         this.tecnologia = tecnologia;
     }
 
-    public Date getFechaadquisicion() {
+    public LocalDate getFechaadquisicion() {
         return fechaAdquisicion;
     }
 
-    public void setFechaadquisicion(Date fechaAdquisicion) {
+    public void setFechaadquisicion(LocalDate fechaAdquisicion) {
         this.fechaAdquisicion = fechaAdquisicion;
+    }
+
+    public Double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
     }
 
     public String getActivo() {
