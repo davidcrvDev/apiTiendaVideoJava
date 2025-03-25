@@ -8,6 +8,8 @@ import apitiendavideo.apitiendavideo.modelos.Tecnologia;
 
 @Repository
 public interface TecnologiaRepositorio extends  JpaRepository<Tecnologia, Long>{
+
+    boolean existsByNombreIgnoreCase(String nombre);
     
     @Query("SELECT d FROM Tecnologia d WHERE d.nombre like '%' || ?1 || '%'")
     List<Tecnologia> buscar(String nombre);
