@@ -10,6 +10,8 @@ import apitiendavideo.apitiendavideo.modelos.Categoria;
 
 @Repository
 public interface CategoriaRepositorio extends JpaRepository<Categoria, Long> {
+
+    boolean existsByNombreIgnoreCase(String nombre);
     
     @Query("SELECT ca FROM Categoria ca WHERE ca.nombre like '%' || ?1 || '%'")
     List<Categoria> buscar(String nombre);
