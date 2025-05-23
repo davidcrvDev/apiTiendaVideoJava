@@ -72,11 +72,11 @@ public class Cliente {
         this.id = id;
     }
 
-    public TipoDocumento getTipodocumento() {
+    public TipoDocumento getTipoDocumento() {
         return tipoDocumento;
     }
 
-    public void setTipodocumento(TipoDocumento tipoDocumento) {
+    public void setTipoDocumento(TipoDocumento tipoDocumento) {
         this.tipoDocumento = tipoDocumento;
     }
 
