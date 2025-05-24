@@ -13,13 +13,13 @@ public class Cliente {
 
     @ManyToOne
     @JoinColumn(name = "IDTIPODOCUMENTO", referencedColumnName = "ID_TIPODOC")
-    private TipoDocumento tipo_documento;
+    private TipoDocumento tipoDocumento;
 
     @Column(name = "NOMBRE_CLIENTE", nullable = false, length = 60)
-    private String nombre_cliente;
+    private String nombre;
 
     @Column(name = "APELLIDO_CLIENTE", nullable = false, length = 60)
-    private String apellido_cliente;
+    private String apellido;
 
     @Column(name = "DIRECCION_CLIENTE", nullable = false, length = 50)
     private String direccion;
@@ -48,12 +48,12 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String id, TipoDocumento tipo_documento, String nombre_cliente, String apellido_cliente, String direccion, 
+    public Cliente(String id, TipoDocumento tipoDocumento, String nombre, String apellido, String direccion, 
                     String telefono, String correo, String movil, String clave, String rol, boolean moroso, boolean activo) {
         this.id = id;
-        this.tipo_documento = tipo_documento;
-        this.nombre_cliente = nombre_cliente;
-        this.apellido_cliente = apellido_cliente;
+        this.tipoDocumento = tipoDocumento;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.direccion = direccion;
         this.telefono = telefono;
         this.correo = correo;
@@ -72,28 +72,28 @@ public class Cliente {
         this.id = id;
     }
 
-    public TipoDocumento getTipo_documento() {
-        return tipo_documento;
+    public TipoDocumento getTipoDocumento() {
+        return tipoDocumento;
     }
 
-    public void setTipo_documento(TipoDocumento tipo_documento) {
-        this.tipo_documento = tipo_documento;
+    public void setTipoDocumento(TipoDocumento tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
-    public String getNombre_cliente() {
-        return nombre_cliente;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombre_cliente(String nombre_cliente) {
-        this.nombre_cliente = nombre_cliente;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getApellido_cliente() {
-        return apellido_cliente;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellido_cliente(String apellido_cliente) {
-        this.apellido_cliente = apellido_cliente;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getDireccion() {

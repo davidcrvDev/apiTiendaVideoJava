@@ -11,6 +11,8 @@ import apitiendavideo.apitiendavideo.modelos.Titulo;
 @Repository
 public interface TituloRepositorio extends JpaRepository<Titulo, Long> {
 
+    boolean existsByNombreIgnoreCase(String nombre);
+
     @Query("SELECT t FROM Titulo t WHERE t.nombre like '%' || ?1 || '%'")
     List<Titulo> buscar(String nombre);
 
