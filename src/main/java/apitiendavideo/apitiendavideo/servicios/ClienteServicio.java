@@ -1,6 +1,7 @@
 package apitiendavideo.apitiendavideo.servicios;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -59,5 +60,18 @@ public class ClienteServicio implements IClienteServicio {
             return false;
         }
     }
+
+    public Cliente login(String correo, String clave) {
+        Optional<Cliente> clienteOpt = repositorio.findByCorreo(correo);
+        if (clienteOpt.isPresent()) {
+            Cliente cliente = clienteOpt.get();
+            if (cliente.getClave().equals(clave)) {
+                return cliente;
+            }
+            throw new RuntimeException("Clave incorrecta");
+        }
+        throw new RuntimeException("Cliente no encontrado");
+    }
+    
 
 }
