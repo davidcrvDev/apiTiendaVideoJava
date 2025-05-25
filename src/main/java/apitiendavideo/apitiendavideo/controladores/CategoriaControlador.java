@@ -24,7 +24,7 @@ public class CategoriaControlador {
     public CategoriaControlador(CategoriaRepositorio categoriaRepositorio) {
         this.categoriaRepositorio = categoriaRepositorio;
     }
-    
+
     @Autowired
     private ICategoriaServicio servicio;
 
@@ -52,8 +52,7 @@ public class CategoriaControlador {
     public Categoria actualizar(@RequestBody Categoria categoria) {
         if (servicio.obtener(categoria.getId()) != null) {
             return servicio.guardar(categoria);
-        }
-        else{
+        } else {
             return null;
         }
     }
@@ -61,7 +60,7 @@ public class CategoriaControlador {
     @RequestMapping(value = "/eliminar/{id}", method = RequestMethod.DELETE)
     public boolean eliminar(@PathVariable long id) {
         return servicio.eliminar(id);
-        
+
     }
 
     @GetMapping("/existe/{nombre}")
