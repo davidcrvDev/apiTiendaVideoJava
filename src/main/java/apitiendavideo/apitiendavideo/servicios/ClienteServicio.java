@@ -10,13 +10,19 @@ import org.springframework.stereotype.Service;
 
 import apitiendavideo.apitiendavideo.interfaces.IClienteServicio;
 import apitiendavideo.apitiendavideo.modelos.Cliente;
+import apitiendavideo.apitiendavideo.modelos.TipoDocumento;
 import apitiendavideo.apitiendavideo.repositorios.ClienteRepositorio;
+import apitiendavideo.apitiendavideo.repositorios.TipoDocumentoRepositorio;
+
 
 @Service
 public class ClienteServicio implements IClienteServicio {
 
     @Autowired
     private ClienteRepositorio repositorio;
+
+    @Autowired
+    private TipoDocumentoRepositorio tipoDocumentoRepositorio;
 
     @PersistenceContext
     public EntityManager em;
@@ -38,6 +44,9 @@ public class ClienteServicio implements IClienteServicio {
 
     @Override
     public Cliente guardar(Cliente cliente) {
+        TipoDocumento tipoDoc = tipoDocumentoRepositorio.findById(cliente.getTipoDocumento().getId())
+        .orElseThrow(() -> new RuntimeException("TipoDocumento no encontrado"));
+        cliente.setTipoDocumento(tipoDoc);
         return repositorio.save(cliente);
     }
 

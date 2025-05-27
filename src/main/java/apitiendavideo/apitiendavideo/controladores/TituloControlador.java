@@ -3,6 +3,8 @@ package apitiendavideo.apitiendavideo.controladores;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import apitiendavideo.apitiendavideo.interfaces.ITituloServicio;
 import apitiendavideo.apitiendavideo.modelos.Titulo;
+import apitiendavideo.apitiendavideo.repositorios.TituloRepositorio;
 
 @RestController
 @RequestMapping("/titulos")
 public class TituloControlador {
+
+    private final TituloRepositorio tituloRepositorio;
+
+    public TituloControlador(TituloRepositorio tituloRepositorio) {
+        this.tituloRepositorio = tituloRepositorio;
+    }
 
     @Autowired
     private ITituloServicio servicio;
@@ -51,6 +60,12 @@ public class TituloControlador {
     @RequestMapping(value = "/eliminar/{id}", method = RequestMethod.DELETE)
     public boolean eliminar(@PathVariable long id) {
         return servicio.eliminar(id);
+    }
+
+    @GetMapping("/existe/{nombre}")
+    public ResponseEntity<Boolean> existeTitulo(@PathVariable String nombre) {
+        boolean existe = tituloRepositorio.existsByNombreIgnoreCase(nombre.trim());
+        return ResponseEntity.ok(existe);
     }
     
 }
