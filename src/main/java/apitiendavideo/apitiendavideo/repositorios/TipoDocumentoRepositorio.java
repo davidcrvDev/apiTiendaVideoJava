@@ -7,12 +7,13 @@ import org.springframework.stereotype.Repository;
 import apitiendavideo.apitiendavideo.modelos.TipoDocumento;
 
 @Repository
-public interface TipoDocumentoRepositorio  extends JpaRepository<TipoDocumento, Long>{
+public interface TipoDocumentoRepositorio extends JpaRepository<TipoDocumento, Long> {
 
     @Query("SELECT td FROM TipoDocumento td WHERE td.tipo like '%' || ?1 || '%'")
     List<TipoDocumento> buscar(String nombre);
 
+    // Select para tipo de documento
     @Query("SELECT td FROM TipoDocumento td order by id ASC")
     List<TipoDocumento> listar();
-    
+
 }
