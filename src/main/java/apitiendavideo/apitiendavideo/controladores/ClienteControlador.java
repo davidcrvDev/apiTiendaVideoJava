@@ -26,7 +26,7 @@ public class ClienteControlador {
     public List<Cliente> listar() {
         return servicio.listar();
     }
-
+    // boolean morosos
     @PatchMapping("/{id}/moroso")
     public ResponseEntity<Cliente> actualizarMoroso(@PathVariable String id, @RequestBody Map<String, Boolean> body) {
         Boolean nuevoMoroso = body.get("moroso");
