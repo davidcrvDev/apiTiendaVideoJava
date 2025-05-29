@@ -15,4 +15,7 @@ public interface ITituloServicio {
     public Titulo guardar(Titulo titulo);
 
     public boolean eliminar(Long id);
+
+    public long contarTitulos();
+
 }

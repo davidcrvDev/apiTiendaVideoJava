@@ -15,7 +15,6 @@ import apitiendavideo.apitiendavideo.modelos.TipoDocumento;
 import apitiendavideo.apitiendavideo.repositorios.ClienteRepositorio;
 import apitiendavideo.apitiendavideo.repositorios.TipoDocumentoRepositorio;
 
-
 @Service
 public class ClienteServicio implements IClienteServicio {
 
@@ -46,7 +45,7 @@ public class ClienteServicio implements IClienteServicio {
     @Override
     public Cliente guardar(Cliente cliente) {
         TipoDocumento tipoDoc = tipoDocumentoRepositorio.findById(cliente.getTipoDocumento().getId())
-        .orElseThrow(() -> new RuntimeException("TipoDocumento no encontrado"));
+                .orElseThrow(() -> new RuntimeException("TipoDocumento no encontrado"));
         cliente.setTipoDocumento(tipoDoc);
         return repositorio.save(cliente);
     }
@@ -72,6 +71,8 @@ public class ClienteServicio implements IClienteServicio {
         }
         throw new RuntimeException("Cliente no encontrado");
     }
-    
 
+    public long contarClientes() {
+        return repositorio.count();
+    }
 }

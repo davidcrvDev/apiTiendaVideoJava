@@ -5,7 +5,7 @@ import java.util.List;
 import apitiendavideo.apitiendavideo.modelos.Inventario;
 
 public interface IInventarioServicio {
-    
+
     public List<Inventario> listar();
 
     public Inventario obtener(Long id);
@@ -15,5 +15,7 @@ public interface IInventarioServicio {
     public Inventario guardar(Inventario inventario);
 
     public boolean eliminar(Long id);
+
+    public long contarInventario();
 
 }

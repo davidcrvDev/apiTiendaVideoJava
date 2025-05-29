@@ -13,8 +13,8 @@ import apitiendavideo.apitiendavideo.modelos.Titulo;
 import apitiendavideo.apitiendavideo.repositorios.TituloRepositorio;
 
 @Service
-public class TituloServicio implements ITituloServicio{
-    
+public class TituloServicio implements ITituloServicio {
+
     @Autowired
     private TituloRepositorio repositorio;
 
@@ -50,5 +50,8 @@ public class TituloServicio implements ITituloServicio{
             return false;
         }
     }
-    
+
+    public long contarTitulos() {
+        return repositorio.count();
+    }
 }
