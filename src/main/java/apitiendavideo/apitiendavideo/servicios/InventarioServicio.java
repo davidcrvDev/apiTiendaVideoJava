@@ -45,4 +45,8 @@ public class InventarioServicio implements IInventarioServicio {
             return false;
         }
     }
+
+    public long contarInventario() {
+        return repositorio.count();
+    }
 }
