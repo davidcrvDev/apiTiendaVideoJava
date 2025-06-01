@@ -90,17 +90,25 @@ public class ClienteControlador {
 
         // Encabezados
         Row header = sheet.createRow(0);
-        header.createCell(0).setCellValue("Nombre");
-        header.createCell(1).setCellValue("Teléfono");
-        header.createCell(2).setCellValue("Correo");
+        header.createCell(0).setCellValue("Identificacion");
+        header.createCell(1).setCellValue("Nombre");
+        header.createCell(2).setCellValue("Apellido");
+        header.createCell(3).setCellValue("Celular");
+        header.createCell(4).setCellValue("Correo");
+        header.createCell(5).setCellValue("Moroso");
+        header.createCell(6).setCellValue("Activo");
 
         // Datos
         int rowNum = 1;
         for (Cliente c : clientes) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(c.getNombre());
-            row.createCell(1).setCellValue(c.getTelefono());
-            row.createCell(2).setCellValue(c.getCorreo());
+            row.createCell(0).setCellValue(c.getId());
+            row.createCell(1).setCellValue(c.getNombre());
+            row.createCell(2).setCellValue(c.getApellido());
+            row.createCell(3).setCellValue(c.getMovil());
+            row.createCell(4).setCellValue(c.getCorreo());
+            row.createCell(5).setCellValue(c.getMoroso());
+            row.createCell(6).setCellValue(c.getActivo());
         }
 
         workbook.write(response.getOutputStream());

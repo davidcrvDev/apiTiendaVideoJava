@@ -97,7 +97,7 @@ public class TituloControlador {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(t.getNombre());
             row.createCell(1).setCellValue(t.getDirector());
-            row.createCell(2).setCellValue(t.getCategoria() != null ? t.getCategoria().toString() : "");
+            row.createCell(2).setCellValue(t.getCategoria().getNombre() != null ? t.getCategoria().getNombre().toString() : "");
         }
 
         workbook.write(response.getOutputStream());

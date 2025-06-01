@@ -86,8 +86,8 @@ public class InventarioControlador {
         int rowNum = 1;
         for (Inventario inv : inventarios) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(inv.getTitulo().toString()); // Ajusta según tu modelo
-            row.createCell(1).setCellValue(inv.getTecnologia().toString()); // Ajusta según tu modelo
+            row.createCell(0).setCellValue(inv.getTitulo().getNombre().toString()); // Ajusta según tu modelo
+            row.createCell(1).setCellValue(inv.getTecnologia().getNombre().toString()); // Ajusta según tu modelo
             row.createCell(2).setCellValue(inv.getPrecio()); // Ajusta según tu modelo
         }
 
