@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "DETALLE_ALQUILER")
 public class DetalleAlquiler {
@@ -16,6 +18,7 @@ public class DetalleAlquiler {
 
     @ManyToOne
     @JoinColumn(name = "IDALQUILER", referencedColumnName = "ID_ALQUILER")
+    @JsonBackReference
     private Alquiler alquiler;
 
     @ManyToOne
