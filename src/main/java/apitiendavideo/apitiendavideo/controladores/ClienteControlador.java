@@ -3,22 +3,27 @@ package apitiendavideo.apitiendavideo.controladores;
 import java.util.List;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import apitiendavideo.apitiendavideo.dtos.CambioClaveDTO;
+import apitiendavideo.apitiendavideo.dtos.MensajeDTO;
 import apitiendavideo.apitiendavideo.interfaces.IClienteServicio;
 import apitiendavideo.apitiendavideo.interfaces.ITituloServicio;
 import apitiendavideo.apitiendavideo.modelos.Cliente;
+import apitiendavideo.apitiendavideo.repositorios.ClienteRepositorio;
 
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -31,6 +36,9 @@ public class ClienteControlador {
 
     @Autowired
     private IClienteServicio servicio;
+
+    @Autowired
+    private ClienteRepositorio repositorio;
 
     @RequestMapping(value = "/listar", method = RequestMethod.GET)
     public List<Cliente> listar() {
@@ -113,5 +121,27 @@ public class ClienteControlador {
 
         workbook.write(response.getOutputStream());
         workbook.close();
+    }
+
+    @PutMapping("/cambiar-clave")
+    public ResponseEntity<MensajeDTO> cambiarClave(@RequestBody CambioClaveDTO datos) {
+        Optional<Cliente> clienteOptional = repositorio.findByCorreo(datos.getCorreo());
+
+        if (!clienteOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                                .body(new MensajeDTO("Usuario no encontrado"));
+        }
+
+        Cliente cliente = clienteOptional.get();
+
+        if (!cliente.getClave().equals(datos.getClaveActual())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                                .body(new MensajeDTO("Clave actual incorrecta"));
+        }
+
+        cliente.setClave(datos.getNuevaClave());
+        repositorio.save(cliente);
+
+        return ResponseEntity.ok(new MensajeDTO("Contraseña actualizada con éxito"));
     }
 }
