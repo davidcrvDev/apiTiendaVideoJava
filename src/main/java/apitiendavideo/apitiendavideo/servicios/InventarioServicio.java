@@ -22,8 +22,8 @@ public class InventarioServicio implements IInventarioServicio {
 
     @Override
     public Inventario obtener(Long id) {
-        var pais = repositorio.findById(id);
-        return pais.isEmpty() ? null : pais.get();
+        var inventario = repositorio.findById(id);
+        return inventario.isEmpty() ? null : inventario.get();
     }
 
     @Override
@@ -32,8 +32,8 @@ public class InventarioServicio implements IInventarioServicio {
     }
 
     @Override
-    public Inventario guardar(Inventario pais) {
-        return repositorio.save(pais);
+    public Inventario guardar(Inventario inventario) {
+        return repositorio.save(inventario);
     }
 
     @Override
