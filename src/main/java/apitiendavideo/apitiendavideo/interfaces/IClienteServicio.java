@@ -15,5 +15,7 @@ public interface IClienteServicio {
     public Cliente guardar(Cliente cliente);
 
     public boolean eliminar(String id);
+
+    public long contarClientes();
     
 }

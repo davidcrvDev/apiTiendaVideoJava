@@ -6,7 +6,16 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
 import java.text.ParseException;
+
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -57,6 +66,35 @@ public class InventarioControlador {
         return servicio.eliminar(id);
     }
 
+    @GetMapping("/reporte")
+    public void exportarInventariosExcel(HttpServletResponse response) throws IOException {
+        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        response.setHeader("Content-Disposition", "attachment; filename=inventarios_reporte.xlsx");
+
+        List<Inventario> inventarios = servicio.listar();
+
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet("Reporte Inventarios");
+
+        // Encabezados
+        Row header = sheet.createRow(0);
+        header.createCell(0).setCellValue("Título");
+        header.createCell(1).setCellValue("Tecnología");
+        header.createCell(2).setCellValue("Precio");
+
+        // Datos
+        int rowNum = 1;
+        for (Inventario inv : inventarios) {
+            Row row = sheet.createRow(rowNum++);
+            row.createCell(0).setCellValue(inv.getTitulo().getNombre().toString()); // Ajusta según tu modelo
+            row.createCell(1).setCellValue(inv.getTecnologia().getNombre().toString()); // Ajusta según tu modelo
+            row.createCell(2).setCellValue(inv.getPrecio()); // Ajusta según tu modelo
+        }
+
+        workbook.write(response.getOutputStream());
+        workbook.close();
+    }
+
     // @PostMapping("/tu_endpoint")
     // public String dateToString(@RequestBody Inventario inventario) {
     //     // Otras operaciones...
@@ -77,6 +115,5 @@ public class InventarioControlador {
     //         return "Error interno del servidor";
     //     }
     // }
-
 
 }

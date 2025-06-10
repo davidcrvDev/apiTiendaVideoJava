@@ -16,4 +16,6 @@ public interface IInventarioServicio {
 
     public boolean eliminar(Long id);
 
+    public long contarInventario();
+
 }

@@ -2,9 +2,13 @@ package apitiendavideo.apitiendavideo.modelos;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
+
 import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "ALQUILER")
@@ -17,7 +21,7 @@ public class Alquiler {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "IDCLIENTE", referencedColumnName = "ID_CLIENTE") //Pasa de ser "tercero" a "CLIENTE"
+    @JoinColumn(name = "IDCLIENTE", referencedColumnName = "ID_CLIENTE") // Pasa de ser "tercero" a "CLIENTE"
     private Cliente cliente;
 
     @Column(name = "FECHA_PRESTAMO", nullable = false)
@@ -32,11 +36,15 @@ public class Alquiler {
     @Column(name = "PRECIO_ALQUILER", nullable = false)
     private double precio;
 
+    @OneToMany(mappedBy = "alquiler", cascade = CascadeType.ALL, orphanRemoval = true) // 
+    @JsonManagedReference
+    private List<DetalleAlquiler> detalles;
+
     public Alquiler() {
     }
 
     public Alquiler(Long id, Cliente cliente, LocalDate fechaPrestamo, int plazo,
-                    LocalDate fechaDevolucion, double precio) {
+            LocalDate fechaDevolucion, double precio) {
         this.id = id;
         this.cliente = cliente;
         this.fechaPrestamo = fechaPrestamo;
@@ -91,6 +99,14 @@ public class Alquiler {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public List<DetalleAlquiler> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(List<DetalleAlquiler> detalles) {
+        this.detalles = detalles;
     }
 
 }

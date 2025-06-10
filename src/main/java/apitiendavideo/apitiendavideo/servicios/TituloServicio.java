@@ -51,4 +51,7 @@ public class TituloServicio implements ITituloServicio{
         }
     }
     
+    public long contarTitulos() {
+        return repositorio.count();
+    }
 }
