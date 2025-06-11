@@ -94,7 +94,7 @@ public class ApitiendavideoApplication {
 		@Override
 		public void addCorsMappings(CorsRegistry registry) {
 			registry.addMapping("/**")
-					.allowedOrigins("https://tiendavideo-o8ux.onrender.com")
+					.allowedOrigins("*")
 					.allowedMethods("*")
 					.allowedHeaders("*");
 		}
