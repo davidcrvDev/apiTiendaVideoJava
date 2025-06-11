@@ -42,6 +42,7 @@ class ClienteDTO {
 
 @RestController
 @RequestMapping("/auth")
+@CrossOrigin(origins = "*")
 public class AuthControlador {
 
     @Autowired
