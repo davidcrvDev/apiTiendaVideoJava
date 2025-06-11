@@ -1,0 +1,4 @@
+environment:
+  - DB_URL=jdbc:postgresql://postgres:5432/tiendavideo
+  - DB_USER=postgres
+  - DB_PASS=1407
