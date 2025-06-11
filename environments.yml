@@ -1,4 +1,4 @@
 environment:
-  - DB_URL=postgresql://tiendavideo_user:l7VSUVJqX58RozF9VyANcxLM6LGp8Jbd@dpg-d14dmfripnbc73f9ib7g-a/tiendavideo
+  - DB_URL=jdbc:postgresql://dpg-d14dmfripnbc73f9ib7g-a:5432/tiendavideo
   - DB_USER=tiendavideo_user
   - DB_PASS=l7VSUVJqX58RozF9VyANcxLM6LGp8Jbd
